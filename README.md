@@ -94,7 +94,6 @@ Recommended VS Code extensions:
    - description (text)
    - course (text: Starter | Main | Dessert)
    - price (numeric)
-   - created_at, updated_at (timestamps)
 
 4. Start
    npx expo start --tunnel
