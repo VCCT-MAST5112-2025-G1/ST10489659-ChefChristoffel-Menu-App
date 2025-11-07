@@ -39,11 +39,6 @@
 - Put the release date beside the version.
 - Update the Unreleased section while developing; move entries into a version block when releasing.
 
-If you'd like, I can:
-- Commit these updated files to a new branch and open a PR.
-- Reformat the changelog to follow Keep a Changelog (keepachangelog.com) strictly.
-- Add a release checklist or a GitHub Actions workflow to auto-generate changelog entries from PR titles.
-
 ## [2.0.0] - 2025-10-22
 
 Initial stable release
@@ -66,3 +61,7 @@ Initial stable release
 ### Fix
 
 - Updated Readme.md file.
+
+### Removed
+
+- Removed unnecessary  imformation here.
