@@ -54,6 +54,14 @@ Initial stable release
 
 ### [3.0.0] - 2025-11-7
 
+### Changelog
+
+- Updated Readme.md with:
+  - Detailed setup steps for local development.
+  - How to run the app on a simulator and a physical device
+  - Notes on where to find and modify sample data
+
+
 ### Fixed
 
 - Updated Readme.md file.
