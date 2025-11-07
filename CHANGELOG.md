@@ -54,7 +54,7 @@ Initial stable release
 
 ### [3.0.0] - 2025-11-7
 
-### Fix
+### Fixed
 
 - Updated Readme.md file.
 - Resolved a README step that could cause confusion when installing dependencies
