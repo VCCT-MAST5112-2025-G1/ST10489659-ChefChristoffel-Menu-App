@@ -43,7 +43,7 @@ Technical Highlights:
 
 ---
 
-Screenshots:
+## Screenshots
 
 ![WhatsApp Image 2025-10-22 at 20 32 01_1e98b851](https://github.com/user-attachments/assets/d8932055-c2e8-4917-846f-2e4100d30177)
 ![WhatsApp Image 2025-10-22 at 20 32 01_9ba4e851](https://github.com/user-attachments/assets/dce1a0ad-d7b4-4e91-b4cc-9b5a0a802240)
