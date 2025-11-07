@@ -10,9 +10,9 @@ All notable changes to this project are recorded in this file. This project foll
 ---
 
 ## [1.0.0] - 2025-10-10
-Initial release — a working foundation for a menu management app.
 
 ### Added
+
 - Project scaffold with Expo + React Native and TypeScript
 - Screens:
   - Home (menu display and analytics)
@@ -54,7 +54,9 @@ If you'd like, I can:
 - Add a release checklist or a GitHub Actions workflow to auto-generate changelog entries from PR titles.
 
 ## [2.0.0] - 2025-10-22
+
 Initial stable release
+
 - Core features implemented:
   - Add, view, and remove menu items
   - Course categories: Starter, Main, Dessert
@@ -67,3 +69,9 @@ Initial stable release
 - Basic error handling and loading/empty states
 
 ---
+
+### [3.0.0] - 2025-11-7
+
+### Fix
+
+- Updated Readme.md file.
