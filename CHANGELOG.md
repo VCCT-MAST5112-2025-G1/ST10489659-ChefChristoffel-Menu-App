@@ -22,11 +22,13 @@
   - Simple, consistent color tokens and typography
 
 ### Improved
+
 - TypeScript coverage and explicit types for menu data
 - Form validation and user-friendly error messages
 - Defensive error handling around local storage and JSON parsing
 
 ### Technical notes
+
 - Data persisted using AsyncStorage for offline-first usage
 - Simple analytics: average price calculated per course
 - Localized price display in South African Rands (R)
@@ -55,7 +57,9 @@ Initial stable release
 ### Fix
 
 - Updated Readme.md file.
+- Resolved a README step that could cause confusion when installing dependencies
 
 ### Removed
 
-- Removed unnecessary  imformation here.
+- Removed unnecessary placeholder text from documentation and changelog
+- Cleaned up duplicated or outdated notes in project docs
