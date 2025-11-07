@@ -1,14 +1,5 @@
 # Changelog
 
-All notable changes to this project are recorded in this file. This project follows a simple, human-readable changelog format.
-
-## Unreleased
-- Polished TypeScript type safety and defensive checks in utilities
-- Fix: close JSX expressions and ensure components compile cleanly
-- Documentation: improved README and CHANGELOG wording for clarity
-
----
-
 ## [1.0.0] - 2025-10-10
 
 ### Added
