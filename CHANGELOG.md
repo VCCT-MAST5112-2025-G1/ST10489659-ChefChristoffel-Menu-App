@@ -33,12 +33,6 @@
 
 ---
 
-### How we write entries
-- Keep entries short and meaningful.
-- Group entries under Added, Changed/Improved, Fixed, and Removed where helpful.
-- Put the release date beside the version.
-- Update the Unreleased section while developing; move entries into a version block when releasing.
-
 ## [2.0.0] - 2025-10-22
 
 Initial stable release
