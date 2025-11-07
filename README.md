@@ -1,7 +1,8 @@
 # Christoffel's Menu Management App
 
 Repository: https://github.com/ST10489659/ChefChristoffel-Menu-App  
-YouTube Link: <INSERT_YOUTUBE_VIDEO_URL_HERE>
+YouTube Link: [<INSERT_YOUTUBE_VIDEO_URL_HERE>](https://youtu.be/aDhuqBPyqWI?si=LkeVlW7Bz1b5L9EO)
+
 
 A professional mobile application for Chef Christoffel's private chef services, built with React Native and Expo. This app enables dynamic menu management so the chef can create, view, filter, and manage menu items across courses with real‑time statistics and a clean mobile UI.
 
@@ -49,6 +50,18 @@ Short feature explanations
 - Filter: Choose a course to view only that category; item counts update to reflect the filter.
 - Statistics: Calculated from the current dataset (cached in context) for immediate feedback.
 - Sample Data: Useful for demos and testing; items can be removed individually afterwards.
+
+---
+
+## Screenshots
+![WhatsApp Image 2025-10-22 at 20 32 01_1e98b851](https://github.com/user-attachments/assets/d8932055-c2e8-4917-846f-2e4100d30177)
+![WhatsApp Image 2025-10-22 at 20 32 01_9ba4e851](https://github.com/user-attachments/assets/dce1a0ad-d7b4-4e91-b4cc-9b5a0a802240)
+![WhatsApp Image 2025-10-22 at 20 32 01_e85397b0](https://github.com/user-attachments/assets/31f9e8db-b7e9-4a2b-994b-3428eef4d90f)
+![WhatsApp Image 2025-10-22 at 20 32 02_29f2c7a6](https://github.com/user-attachments/assets/1a9b9977-2d22-45d8-84a3-27d24dc7bdd8)
+![WhatsApp Image 2025-10-22 at 20 32 02_dd484a4c](https://github.com/user-attachments/assets/44b65158-a604-424b-82f2-8079eea46288)
+![WhatsApp Image 2025-10-22 at 21 22 57_91dd003c](https://github.com/user-attachments/assets/3cdb8864-64b2-40c8-b97a-be861e0842ca)
+![WhatsApp Image 2025-10-22 at 21 22 57_1016e910](https://github.com/user-attachments/assets/442dda9d-70fe-47c7-a164-e3d36192e81a)
+![WhatsApp Image 2025-10-22 at 21 22 58_fd1a1908](https://github.com/user-attachments/assets/13a2af4e-10dc-4143-bbb5-ae233256dc5f)
 
 ---
 
