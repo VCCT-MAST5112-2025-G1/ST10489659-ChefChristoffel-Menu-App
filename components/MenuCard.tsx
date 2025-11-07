@@ -1,44 +1,44 @@
-import { View, Text, StyleSheet } from "react-native"
+import { View, Text, StyleSheet } from "react-native";
 
-type Course = "Starters" | "Mains" | "Dessert" | string
+type Course = "Starters" | "Mains" | "Dessert" | string;
 
 interface MenuItem {
-  name: string
-  description: string
-  price: number
-  course: Course
+  name: string;
+  description: string;
+  price: number;
+  course: Course;
 }
 
 interface MenuCardProps {
-  item: MenuItem
+  item: MenuItem;
 }
 
 export default function MenuCard({ item }: MenuCardProps) {
   const getCourseColor = (course: Course): string => {
     switch (course) {
       case "Starters":
-        return "#10b981"
+        return "#10b981";
       case "Mains":
-        return "#f59e0b"
+        return "#f59e0b";
       case "Dessert":
-        return "#ec4899"
+        return "#ec4899";
       default:
-        return "#8B4513"
+        return "#8B4513";
     }
-  }
+  };
 
   const getCourseIcon = (course: Course): string => {
     switch (course) {
       case "Starters":
-        return "🥗"
+        return "🥗";
       case "Mains":
-        return "🍖"
+        return "🍖";
       case "Dessert":
-        return "🍰"
+        return "🍰";
       default:
-        return "🍽️"
+        return "🍽️";
     }
-  }
+  };
 
   return (
     <View style={styles.card}>
@@ -47,14 +47,19 @@ export default function MenuCard({ item }: MenuCardProps) {
           <Text style={styles.icon}>{getCourseIcon(item.course)}</Text>
           <Text style={styles.name}>{item.name}</Text>
         </View>
-        <View style={[styles.courseBadge, { backgroundColor: getCourseColor(item.course) }]}>
+        <View
+          style={[
+            styles.courseBadge,
+            { backgroundColor: getCourseColor(item.course) },
+          ]}
+        >
           <Text style={styles.courseText}>{item.course}</Text>
         </View>
       </View>
       <Text style={styles.description}>{item.description}</Text>
       <Text style={styles.price}>R{item.price.toFixed(2)}</Text>
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -111,4 +116,4 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#8B4513",
   },
-})
+});

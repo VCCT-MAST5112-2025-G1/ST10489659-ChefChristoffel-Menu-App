@@ -1,6 +1,12 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import type { MenuItem } from './types';
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import type { MenuItem } from "./types";
 
 interface MenuContextType {
   menuItems: MenuItem[];
@@ -10,7 +16,9 @@ interface MenuContextType {
 
 const MenuContext = createContext<MenuContextType | undefined>(undefined);
 
-export const MenuProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+export const MenuProvider: React.FC<{ children: ReactNode }> = ({
+  children,
+}) => {
   const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -36,21 +44,21 @@ export const MenuProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 
   const loadMenuItems = async (): Promise<void> => {
     try {
-      const stored = await AsyncStorage.getItem('menuItems');
+      const stored = await AsyncStorage.getItem("menuItems");
       if (stored) {
         setMenuItems(JSON.parse(stored));
       }
     } catch (error) {
-      console.error('Error loading menu items:', error);
+      console.error("Error loading menu items:", error);
     }
   };
 
   const saveMenuItems = async (items: MenuItem[]): Promise<void> => {
     try {
-      await AsyncStorage.setItem('menuItems', JSON.stringify(items));
+      await AsyncStorage.setItem("menuItems", JSON.stringify(items));
       setMenuItems(items);
     } catch (error) {
-      console.error('Error saving menu items:', error);
+      console.error("Error saving menu items:", error);
     }
   };
 
@@ -64,7 +72,7 @@ export const MenuProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
 export const useMenu = (): MenuContextType => {
   const context = useContext(MenuContext);
   if (!context) {
-    throw new Error('useMenu must be used within a MenuProvider');
+    throw new Error("useMenu must be used within a MenuProvider");
   }
   return context;
 };

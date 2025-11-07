@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from "react-native"
+import { View, Text, StyleSheet } from "react-native";
 
 /**
  * Analytics card component displaying course statistics
@@ -7,13 +7,18 @@ import { View, Text, StyleSheet } from "react-native"
  */
 
 interface AnalyticsCardProps {
-  title: string
-  value: string
-  icon: string
-  color: string
+  title: string;
+  value: string;
+  icon: string;
+  color: string;
 }
 
-export default function AnalyticsCard({ title, value, icon, color }: AnalyticsCardProps) {
+export default function AnalyticsCard({
+  title,
+  value,
+  icon,
+  color,
+}: AnalyticsCardProps) {
   return (
     <View style={[styles.card, { borderLeftColor: color }]}>
       <View style={styles.iconContainer}>
@@ -24,7 +29,7 @@ export default function AnalyticsCard({ title, value, icon, color }: AnalyticsCa
         <Text style={[styles.value, { color }]}>{value}</Text>
       </View>
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -66,4 +71,4 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: "700",
   },
-})
+});

@@ -1,16 +1,24 @@
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from "react-native"
-import type { MenuItem, Course } from "../types.ts"
-import MenuCard from "../components/MenuCard"
-import { useMenu} from '../MenuContext'
-import { NativeStackNavigationProp } from "@react-navigation/native-stack"
-import { RootStackParamList } from "./../types.js"
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
+import type { MenuItem, Course } from "../types.ts";
+import MenuCard from "../components/MenuCard";
+import { useMenu } from "../MenuContext";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { RootStackParamList } from "./../types.js";
 
-type HomeScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, "Home">
+type HomeScreenNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  "Home"
+>;
 
 interface HomeScreenProps {
-  navigation: HomeScreenNavigationProp
+  navigation: HomeScreenNavigationProp;
 }
-
 
 export default function HomeScreen({ navigation }: HomeScreenProps) {
   const { menuItems } = useMenu();
@@ -21,38 +29,42 @@ export default function HomeScreen({ navigation }: HomeScreenProps) {
       Mains: 0,
       Desserts: 0,
       Drinks: 0,
-    }
+    };
 
     const counts: Record<Course, number> = {
       Starters: 0,
       Mains: 0,
       Desserts: 0,
       Drinks: 0,
-    }
+    };
 
     // LO1: Using for loop concept via forEach
     menuItems.forEach((item) => {
-      averages[item.course] += item.price
-      counts[item.course]++
-    })
+      averages[item.course] += item.price;
+      counts[item.course]++;
+    });
 
     Object.keys(averages).forEach((course) => {
-      const key = course as Course
+      const key = course as Course;
       if (counts[key] > 0) {
-        averages[key] = averages[key] / counts[key]
+        averages[key] = averages[key] / counts[key];
       }
-    })
+    });
 
-    return averages
-  }
+    return averages;
+  };
 
-  const averages = calculateAverages()
+  const averages = calculateAverages();
 
   return (
     <ScrollView style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Welcome to Chef Christoffel's Menu</Text>
-        <Text style={styles.headerSubtitle}>Personalized Culinary Experiences</Text>
+        <Text style={styles.headerTitle}>
+          Welcome to Chef Christoffel's Menu
+        </Text>
+        <Text style={styles.headerSubtitle}>
+          Personalized Culinary Experiences
+        </Text>
       </View>
 
       {/* Analytics Section */}
@@ -64,7 +76,9 @@ export default function HomeScreen({ navigation }: HomeScreenProps) {
             <Text style={styles.statLabel}>Total Items</Text>
           </View>
           <View style={styles.statCard}>
-            <Text style={styles.statValue}>R{averages.Starters.toFixed(2)}</Text>
+            <Text style={styles.statValue}>
+              R{averages.Starters.toFixed(2)}
+            </Text>
             <Text style={styles.statLabel}>Avg Starters</Text>
           </View>
         </View>
@@ -74,7 +88,9 @@ export default function HomeScreen({ navigation }: HomeScreenProps) {
             <Text style={styles.statLabel}>Avg Mains</Text>
           </View>
           <View style={styles.statCard}>
-            <Text style={styles.statValue}>R{averages.Desserts.toFixed(2)}</Text>
+            <Text style={styles.statValue}>
+              R{averages.Desserts.toFixed(2)}
+            </Text>
             <Text style={styles.statLabel}>Avg Desserts</Text>
           </View>
         </View>
@@ -87,7 +103,9 @@ export default function HomeScreen({ navigation }: HomeScreenProps) {
           <View style={styles.emptyState}>
             <Text style={styles.emptyIcon}>🍽️</Text>
             <Text style={styles.emptyText}>No menu items yet</Text>
-            <Text style={styles.emptySubtext}>The chef hasn't added any dishes yet</Text>
+            <Text style={styles.emptySubtext}>
+              The chef hasn't added any dishes yet
+            </Text>
           </View>
         ) : (
           menuItems.map((item) => <MenuCard item={item} />)
@@ -96,15 +114,21 @@ export default function HomeScreen({ navigation }: HomeScreenProps) {
 
       {/* Action Buttons */}
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate("Filter")}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate("Filter")}
+        >
           <Text style={styles.buttonText}>Filter Menu</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={[styles.button, styles.buttonSecondary]} onPress={() => navigation.navigate("Manage")}>
+        <TouchableOpacity
+          style={[styles.button, styles.buttonSecondary]}
+          onPress={() => navigation.navigate("Manage")}
+        >
           <Text style={styles.buttonText}>Manage Menu</Text>
         </TouchableOpacity>
       </View>
     </ScrollView>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -203,4 +227,4 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "bold",
   },
-})
+});

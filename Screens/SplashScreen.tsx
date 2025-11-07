@@ -1,5 +1,5 @@
-import React from "react"
-import { View, Text, StyleSheet } from "react-native"
+import React from "react";
+import { View, Text, StyleSheet } from "react-native";
 
 export default function SplashScreen() {
   return (
@@ -14,7 +14,7 @@ export default function SplashScreen() {
         <Text style={styles.studentNumber}>ST10489659</Text>
       </View>
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -56,4 +56,4 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: "#d4a574",
   },
-})
+});

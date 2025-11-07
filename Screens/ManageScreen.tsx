@@ -9,47 +9,56 @@
  * - LO6: Use functions to organise code
  */
 
-import { useState } from "react"
-import { View, Text, StyleSheet, ScrollView, TextInput, TouchableOpacity, Alert } from "react-native"
-import { Picker } from "@react-native-picker/picker"
-import type { MenuItem, Course } from "../types"
-import { useMenu} from '../MenuContext'
+import { useState } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TextInput,
+  TouchableOpacity,
+  Alert,
+} from "react-native";
+import { Picker } from "@react-native-picker/picker";
+import type { MenuItem, Course } from "../types";
+import { useMenu } from "../MenuContext";
 
-const COURSES: Course[] = ["Starters", "Mains", "Desserts", "Drinks"]
-
-
+const COURSES: Course[] = ["Starters", "Mains", "Desserts", "Drinks"];
 
 export default function ManageScreen() {
-  const {menuItems, saveMenuItems} = useMenu();
-  const [name, setName] = useState("")
-  const [description, setDescription] = useState("")
-  const [course, setCourse] = useState<Course>("Starters")
-  const [price, setPrice] = useState("")
-  const [errors, setErrors] = useState<Record<string, string>>({})
+  const { menuItems, saveMenuItems } = useMenu();
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [course, setCourse] = useState<Course>("Starters");
+  const [price, setPrice] = useState("");
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   // LO4: Define a function in TypeScript
   const validateForm = (): boolean => {
-    const newErrors: Record<string, string> = {}
+    const newErrors: Record<string, string> = {};
 
     if (!name.trim()) {
-      newErrors.name = "Dish name is required"
+      newErrors.name = "Dish name is required";
     }
     if (!description.trim()) {
-      newErrors.description = "Description is required"
+      newErrors.description = "Description is required";
     }
     if (!price || isNaN(Number(price)) || Number(price) <= 0) {
-      newErrors.price = "Please enter a valid price"
+      newErrors.price = "Please enter a valid price";
     }
 
-    setErrors(newErrors)
-    return Object.keys(newErrors).length === 0
-  }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   // LO4 & LO6: Using functions to organize code
   const addMenuItem = async () => {
     if (!validateForm()) {
-      Alert.alert("Validation Error", "Please fix the errors before submitting")
-      return
+      Alert.alert(
+        "Validation Error",
+        "Please fix the errors before submitting"
+      );
+      return;
     }
 
     const newItem: MenuItem = {
@@ -58,20 +67,20 @@ export default function ManageScreen() {
       description: description.trim(),
       course,
       price: Number(price),
-    }
+    };
 
-    const updatedItems = [...menuItems, newItem]
-    await saveMenuItems(updatedItems)
+    const updatedItems = [...menuItems, newItem];
+    await saveMenuItems(updatedItems);
 
     // Reset form
-    setName("")
-    setDescription("")
-    setCourse("Starters")
-    setPrice("")
-    setErrors({})
+    setName("");
+    setDescription("");
+    setCourse("Starters");
+    setPrice("");
+    setErrors({});
 
-    Alert.alert("Success", `${newItem.name} has been added to the menu!`)
-  }
+    Alert.alert("Success", `${newItem.name} has been added to the menu!`);
+  };
 
   const removeMenuItem = (id: string) => {
     Alert.alert("Remove Item", "Are you sure you want to remove this item?", [
@@ -80,13 +89,13 @@ export default function ManageScreen() {
         text: "Remove",
         style: "destructive",
         onPress: async () => {
-          const updatedItems = menuItems.filter((item) => item.id !== id)
-          await saveMenuItems(updatedItems)
-          Alert.alert("Success", "Item removed from menu")
+          const updatedItems = menuItems.filter((item) => item.id !== id);
+          await saveMenuItems(updatedItems);
+          Alert.alert("Success", "Item removed from menu");
         },
       },
-    ])
-  }
+    ]);
+  };
 
   return (
     <ScrollView style={styles.container}>
@@ -115,7 +124,11 @@ export default function ManageScreen() {
         <View style={styles.inputGroup}>
           <Text style={styles.label}>Description *</Text>
           <TextInput
-            style={[styles.input, styles.textArea, errors.description && styles.inputError]}
+            style={[
+              styles.input,
+              styles.textArea,
+              errors.description && styles.inputError,
+            ]}
             value={description}
             onChangeText={setDescription}
             placeholder="Describe the dish..."
@@ -123,13 +136,19 @@ export default function ManageScreen() {
             multiline
             numberOfLines={3}
           />
-          {errors.description && <Text style={styles.errorText}>{errors.description}</Text>}
+          {errors.description && (
+            <Text style={styles.errorText}>{errors.description}</Text>
+          )}
         </View>
 
         <View style={styles.inputGroup}>
           <Text style={styles.label}>Course *</Text>
           <View style={styles.pickerContainer}>
-            <Picker selectedValue={course} onValueChange={(value) => setCourse(value as Course)} style={styles.picker}>
+            <Picker
+              selectedValue={course}
+              onValueChange={(value) => setCourse(value as Course)}
+              style={styles.picker}
+            >
               {COURSES.map((c) => (
                 <Picker.Item label={c} value={c} />
               ))}
@@ -157,7 +176,9 @@ export default function ManageScreen() {
 
       {/* Current Menu Items */}
       <View style={styles.listContainer}>
-        <Text style={styles.listTitle}>Current Menu ({menuItems.length} items)</Text>
+        <Text style={styles.listTitle}>
+          Current Menu ({menuItems.length} items)
+        </Text>
         {menuItems.length === 0 ? (
           <View style={styles.emptyState}>
             <Text style={styles.emptyIcon}>📝</Text>
@@ -170,9 +191,14 @@ export default function ManageScreen() {
               <View style={styles.menuItemContent}>
                 <Text style={styles.menuItemName}>{item.name}</Text>
                 <Text style={styles.menuItemCourse}>{item.course}</Text>
-                <Text style={styles.menuItemPrice}>R{item.price.toFixed(2)}</Text>
+                <Text style={styles.menuItemPrice}>
+                  R{item.price.toFixed(2)}
+                </Text>
               </View>
-              <TouchableOpacity style={styles.removeButton} onPress={() => removeMenuItem(item.id)}>
+              <TouchableOpacity
+                style={styles.removeButton}
+                onPress={() => removeMenuItem(item.id)}
+              >
                 <Text style={styles.removeButtonText}>Remove</Text>
               </TouchableOpacity>
             </View>
@@ -180,7 +206,7 @@ export default function ManageScreen() {
         )}
       </View>
     </ScrollView>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -345,4 +371,4 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: "600",
   },
-})
+});

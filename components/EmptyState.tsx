@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet } from "react-native"
+import { View, Text, StyleSheet } from "react-native";
 
 /**
  * Empty state component for when no menu items exist
@@ -7,8 +7,8 @@ import { View, Text, StyleSheet } from "react-native"
  */
 
 interface EmptyStateProps {
-  message: string
-  icon?: string
+  message: string;
+  icon?: string;
 }
 
 export default function EmptyState({ message, icon = "🍽️" }: EmptyStateProps) {
@@ -17,7 +17,7 @@ export default function EmptyState({ message, icon = "🍽️" }: EmptyStateProp
       <Text style={styles.icon}>{icon}</Text>
       <Text style={styles.message}>{message}</Text>
     </View>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -37,4 +37,4 @@ const styles = StyleSheet.create({
     textAlign: "center",
     lineHeight: 24,
   },
-})
+});

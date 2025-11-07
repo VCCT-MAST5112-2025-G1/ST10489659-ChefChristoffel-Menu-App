@@ -9,46 +9,51 @@
  * - LO6: Use functions to organise code (filterByCourse)
  */
 
-import { useState } from "react"
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from "react-native"
-import { MenuItem, Course, COURSES } from "../types"
-import MenuCard from "../components/MenuCard"
-import { useMenu} from '../MenuContext'
+import { useState } from "react";
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
+import { MenuItem, Course, COURSES } from "../types";
+import MenuCard from "../components/MenuCard";
+import { useMenu } from "../MenuContext";
 
 interface FilterScreenProps {
-  navigation: any
-  
+  navigation: any;
 }
 
 export default function FilterScreen() {
-  const {menuItems} = useMenu();
-  const [selectedCourse, setSelectedCourse] = useState<Course | "All">("All")
+  const { menuItems } = useMenu();
+  const [selectedCourse, setSelectedCourse] = useState<Course | "All">("All");
 
   // LO6: Using functions to organize code
   const filterByCourse = (course: Course | "All"): MenuItem[] => {
     if (course === "All") {
-      return menuItems
+      return menuItems;
     }
     // LO2: Filter operation (similar to while loop concept)
-    return menuItems.filter((item) => item.course === course)
-  }
+    return menuItems.filter((item) => item.course === course);
+  };
 
-  const filteredItems = filterByCourse(selectedCourse)
+  const filteredItems = filterByCourse(selectedCourse);
 
   const getCourseIcon = (course: Course | "All"): string => {
     switch (course) {
       case "Starters":
-        return "🥗"
+        return "🥗";
       case "Mains":
-        return "🍖"
+        return "🍖";
       case "Desserts":
-        return "🍰"
+        return "🍰";
       case "Drinks":
-        return "🍹"
+        return "🍹";
       default:
-        return "🍽️"
+        return "🍽️";
     }
-  }
+  };
 
   return (
     <ScrollView style={styles.container}>
@@ -60,21 +65,41 @@ export default function FilterScreen() {
       {/* Filter Buttons */}
       <View style={styles.filterContainer}>
         <TouchableOpacity
-          style={[styles.filterButton, selectedCourse === "All" && styles.filterButtonActive]}
+          style={[
+            styles.filterButton,
+            selectedCourse === "All" && styles.filterButtonActive,
+          ]}
           onPress={() => setSelectedCourse("All")}
         >
           <Text style={styles.filterIcon}>{getCourseIcon("All")}</Text>
-          <Text style={[styles.filterText, selectedCourse === "All" && styles.filterTextActive]}>All</Text>
+          <Text
+            style={[
+              styles.filterText,
+              selectedCourse === "All" && styles.filterTextActive,
+            ]}
+          >
+            All
+          </Text>
         </TouchableOpacity>
 
         {COURSES.map((course) => (
           <TouchableOpacity
             key={course}
-            style={[styles.filterButton, selectedCourse === course && styles.filterButtonActive]}
+            style={[
+              styles.filterButton,
+              selectedCourse === course && styles.filterButtonActive,
+            ]}
             onPress={() => setSelectedCourse(course)}
           >
             <Text style={styles.filterIcon}>{getCourseIcon(course)}</Text>
-            <Text style={[styles.filterText, selectedCourse === course && styles.filterTextActive]}>{course}</Text>
+            <Text
+              style={[
+                styles.filterText,
+                selectedCourse === course && styles.filterTextActive,
+              ]}
+            >
+              {course}
+            </Text>
           </TouchableOpacity>
         ))}
       </View>
@@ -82,21 +107,24 @@ export default function FilterScreen() {
       {/* Filtered Results */}
       <View style={styles.resultsContainer}>
         <Text style={styles.resultsTitle}>
-          {selectedCourse === "All" ? "All Items" : selectedCourse} ({filteredItems.length})
+          {selectedCourse === "All" ? "All Items" : selectedCourse} (
+          {filteredItems.length})
         </Text>
 
         {filteredItems.length === 0 ? (
           <View style={styles.emptyState}>
             <Text style={styles.emptyIcon}>🔍</Text>
             <Text style={styles.emptyText}>No items found</Text>
-            <Text style={styles.emptySubtext}>No dishes in this category yet</Text>
+            <Text style={styles.emptySubtext}>
+              No dishes in this category yet
+            </Text>
           </View>
         ) : (
-          filteredItems.map((item) => <MenuCard  item={item} />)
+          filteredItems.map((item) => <MenuCard item={item} />)
         )}
       </View>
     </ScrollView>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -183,4 +211,4 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: "#666",
   },
-})
+});

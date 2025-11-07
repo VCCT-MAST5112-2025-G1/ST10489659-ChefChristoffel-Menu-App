@@ -1,14 +1,22 @@
-import { useState } from "react"
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, ScrollView, Alert } from "react-native"
+import { useState } from "react";
+import {
+  View,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet,
+  ScrollView,
+  Alert,
+} from "react-native";
 
-type Course = "Starters" | "Mains" | "Desserts"
+type Course = "Starters" | "Mains" | "Desserts";
 
 interface MenuItem {
-  id: string
-  name: string
-  description: string
-  course: Course
-  price: number
+  id: string;
+  name: string;
+  description: string;
+  course: Course;
+  price: number;
 }
 
 /**
@@ -28,45 +36,45 @@ interface MenuItem {
  */
 
 interface AddMenuItemFormProps {
-  onAdd: (item: Omit<MenuItem, "id">) => void
+  onAdd: (item: Omit<MenuItem, "id">) => void;
 }
 
-const COURSES: Course[] = ["Starters", "Mains", "Desserts"]
+const COURSES: Course[] = ["Starters", "Mains", "Desserts"];
 
 export default function AddMenuItemForm({ onAdd }: AddMenuItemFormProps) {
-  const [dishName, setDishName] = useState("")
-  const [description, setDescription] = useState("")
-  const [course, setCourse] = useState<Course>("Starters")
-  const [price, setPrice] = useState("")
+  const [dishName, setDishName] = useState("");
+  const [description, setDescription] = useState("");
+  const [course, setCourse] = useState<Course>("Starters");
+  const [price, setPrice] = useState("");
   const [errors, setErrors] = useState<{
-    dishName?: string
-    description?: string
-    price?: string
-  }>({})
+    dishName?: string;
+    description?: string;
+    price?: string;
+  }>({});
 
   const validateForm = (): boolean => {
-    const newErrors: typeof errors = {}
+    const newErrors: typeof errors = {};
 
     if (!dishName.trim()) {
-      newErrors.dishName = "Dish name is required"
+      newErrors.dishName = "Dish name is required";
     }
 
     if (!description.trim()) {
-      newErrors.description = "Description is required"
+      newErrors.description = "Description is required";
     }
 
-    const priceNum = Number.parseFloat(price)
+    const priceNum = Number.parseFloat(price);
     if (!price || isNaN(priceNum) || priceNum <= 0) {
-      newErrors.price = "Please enter a valid price greater than 0"
+      newErrors.price = "Please enter a valid price greater than 0";
     }
 
-    setErrors(newErrors)
-    return Object.keys(newErrors).length === 0
-  }
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleSubmit = () => {
     if (!validateForm()) {
-      return
+      return;
     }
 
     const newItem = {
@@ -74,19 +82,19 @@ export default function AddMenuItemForm({ onAdd }: AddMenuItemFormProps) {
       description: description.trim(),
       course,
       price: Number.parseFloat(price),
-    } as Omit<MenuItem, "id">
+    } as Omit<MenuItem, "id">;
 
-    onAdd(newItem)
+    onAdd(newItem);
 
     // Reset form
-    setDishName("")
-    setDescription("")
-    setCourse("Starters")
-    setPrice("")
-    setErrors({})
+    setDishName("");
+    setDescription("");
+    setCourse("Starters");
+    setPrice("");
+    setErrors({});
 
-    Alert.alert("Success", "Menu item added successfully!")
-  }
+    Alert.alert("Success", "Menu item added successfully!");
+  };
 
   return (
     <ScrollView style={styles.container}>
@@ -99,13 +107,19 @@ export default function AddMenuItemForm({ onAdd }: AddMenuItemFormProps) {
           placeholder="Enter dish name"
           placeholderTextColor="#999"
         />
-        {errors.dishName && <Text style={styles.errorText}>{errors.dishName}</Text>}
+        {errors.dishName && (
+          <Text style={styles.errorText}>{errors.dishName}</Text>
+        )}
       </View>
 
       <View style={styles.formGroup}>
         <Text style={styles.label}>Description *</Text>
         <TextInput
-          style={[styles.input, styles.textArea, errors.description && styles.inputError]}
+          style={[
+            styles.input,
+            styles.textArea,
+            errors.description && styles.inputError,
+          ]}
           value={description}
           onChangeText={setDescription}
           placeholder="Enter dish description"
@@ -113,7 +127,9 @@ export default function AddMenuItemForm({ onAdd }: AddMenuItemFormProps) {
           multiline
           numberOfLines={4}
         />
-        {errors.description && <Text style={styles.errorText}>{errors.description}</Text>}
+        {errors.description && (
+          <Text style={styles.errorText}>{errors.description}</Text>
+        )}
       </View>
 
       <View style={styles.formGroup}>
@@ -122,10 +138,20 @@ export default function AddMenuItemForm({ onAdd }: AddMenuItemFormProps) {
           {COURSES.map((c) => (
             <TouchableOpacity
               key={c}
-              style={[styles.courseButton, course === c && styles.courseButtonActive]}
+              style={[
+                styles.courseButton,
+                course === c && styles.courseButtonActive,
+              ]}
               onPress={() => setCourse(c)}
             >
-              <Text style={[styles.courseButtonText, course === c && styles.courseButtonTextActive]}>{c}</Text>
+              <Text
+                style={[
+                  styles.courseButtonText,
+                  course === c && styles.courseButtonTextActive,
+                ]}
+              >
+                {c}
+              </Text>
             </TouchableOpacity>
           ))}
         </View>
@@ -148,7 +174,7 @@ export default function AddMenuItemForm({ onAdd }: AddMenuItemFormProps) {
         <Text style={styles.submitButtonText}>Add Menu Item</Text>
       </TouchableOpacity>
     </ScrollView>
-  )
+  );
 }
 
 const styles = StyleSheet.create({
@@ -225,4 +251,4 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: "600",
   },
-})
+});
