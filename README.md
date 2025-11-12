@@ -10,8 +10,6 @@ YouTube Link: [<INSERT_YOUTUBE_VIDEO_URL_HERE>](https://youtu.be/aDhuqBPyqWI?si=
 
 Christoffel's Menu Management App is a digital menu manager designed for Chef Christoffel's private chef services. It streamlines menu creation and management, provides quick statistics (counts and average prices), and offers an intuitive mobile experience for adding and organizing dishes.
 
-This repository is implemented in TypeScript (100%) and uses Expo + React Native for the mobile frontend and Supabase for persistence.
-
 ---
 
 ## Features
@@ -32,16 +30,7 @@ User Experience:
 - Confirmation Dialogs: Prevent accidental deletions.
 - Form Validation: Immediate validation with helpful error messages.
 - Empty & Loading States: Clear feedback when no items or while loading.
-
-Technical Highlights:
-
-- TypeScript: End-to-end type safety.
-- React Context: Centralized menu state management.
-- Supabase Integration: Secure backend with Row Level Security (RLS).
-- Error Handling: Graceful error messages and retry affordances.
-- Responsive Design: Optimized for common Android devices.
-- Modern UI: Clean, consistent styling with iconography.
-
+  
 ---
 
 ## Screenshots
@@ -130,7 +119,6 @@ Sample Data:
 ## Error Handling & Troubleshooting
 
 - TypeScript errors: run npm run typecheck and fix reported issues.
-- Expo caching/problems: expo start -c
 
 ---
 
@@ -244,3 +232,20 @@ Expo Tutorial — https://docs.expo.dev/tutorial/introduction/ (Accessed: 22 Oct
 TypeScript for React Native — https://reactnative.dev/docs/typescript (Accessed: 22 October 2025)
 
 ---
+
+### Appendix: Code References
+Chef-Christoffel-Menu-App/
+App.tsx   # Main app component with navigation
+index.ts  # Entry point
+types.ts  # Type definitions and global constants
+MenuContext.tsx  # Global state management
+utils:
+   menuUtils.ts  # Business logic (filtering, calculations)
+   storage.ts  # Data persistence
+Screens:
+   HomeScreen.tsx  # Landing page
+   MenuScreen.tsx  # Menu display and management
+   FilterScreen.tsx  # Course filtering
+
+---
+
