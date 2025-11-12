@@ -117,7 +117,8 @@ Removing Items:
 Sample Data:
 
 - If the menu is empty, use the Add Samples button to insert demo items for testing.
-- Example image:
+Example image:
+
 ![alt text](image.png)
 
 ---
