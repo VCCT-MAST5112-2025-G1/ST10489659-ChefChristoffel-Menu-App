@@ -15,14 +15,20 @@ Christoffel's Menu Management App is a digital menu manager designed for Chef Ch
 ## Features
 
 Core Functionality:
+Menu Management:
+- **Add Dishes**: Chef can add new menu items with:
+  - Dish name (required)
+  - Description (required)
+  - Course category (Starters, Mains, Desserts, Drinks)
+  - Price in South African Rand (R)
+- **Remove Dishes**: Delete items from the menu with confirmation prompts
+- **View All Items**: See complete menu with all details displayed in cards
 
-- Menu Management: Add, view, and remove menu items.
-- Course Categories: Organize dishes into Starter, Main, and Dessert.
-- Real-time Statistics: View total items and average price (overall and per course).
-- Advanced Filtering: Filter menu items by course type (All / Starter / Main / Dessert).
-- Persistent Storage: Menu data stored in Supabase.
-- Sample Data: One‑time "Add Samples" button to populate demo items.
-
+Data persistence:
+- All menu items are saved to device storage using AsyncStorage
+- Data persists between app sessions
+- Automatic loading on app startup with a branded splash screen
+  
 User Experience:
 
 - Intuitive Navigation: Bottom tab navigation to access Menu, Add, and Filter screens.
@@ -96,7 +102,7 @@ Adding a Menu Item:
 
 1. Open Add tab.
 2. Enter Dish Name, Description, select Course, set Price (ZAR).
-3. Tap Add — item saved to Supabase and appears in the Menu.
+3. Tap Add — item saved to AsyncStorage and appears in the Menu.
 
 Viewing & Filtering:
 
@@ -124,8 +130,8 @@ Sample Data:
 
 ## Attribution & Resources
 
-Core technologies: React Native, Expo, TypeScript, Supabase.  
-Libraries: @supabase/supabase-js, expo-router, lucide-react-native.
+Core technologies: React Native, Expo, TypeScript.  
+Libraries: expo-router, lucide-react-native.
 
 Documentation references:
 
