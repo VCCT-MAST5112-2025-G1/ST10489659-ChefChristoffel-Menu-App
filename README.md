@@ -2,7 +2,7 @@
 
 Repository: https://github.com/ST10489659/ChefChristoffel-Menu-App 
 
-YouTube Link: [<INSERT_YOUTUBE_VIDEO_URL_HERE>](https://youtu.be/aDhuqBPyqWI?si=LkeVlW7Bz1b5L9EO)
+YouTube Link: https://youtube.com/watch?v=PMxU0Dz4g90&feature=shared
 
 ---
 
@@ -240,18 +240,18 @@ TypeScript for React Native — https://reactnative.dev/docs/typescript (Accesse
 ---
 
 ### Appendix: Code References
-Chef-Christoffel-Menu-App/
-App.tsx   # Main app component with navigation
-index.ts  # Entry point
-types.ts  # Type definitions and global constants
-MenuContext.tsx  # Global state management
+Chef-Christoffel-Menu-App/:
+- App.tsx   # Main app component with navigation
+- index.ts  # Entry point
+- types.ts  # Type definitions and global constants
+- MenuContext.tsx  # Global state management
 utils:
-   menuUtils.ts  # Business logic (filtering, calculations)
-   storage.ts  # Data persistence
+   - menuUtils.ts  # Business logic (filtering, calculations)
+   - storage.ts  # Data persistence
 Screens:
-   HomeScreen.tsx  # Landing page
-   MenuScreen.tsx  # Menu display and management
-   FilterScreen.tsx  # Course filtering
+   - HomeScreen.tsx  # Landing page
+   - MenuScreen.tsx  # Menu display and management
+   - FilterScreen.tsx  # Course filtering
 
 ---
 
